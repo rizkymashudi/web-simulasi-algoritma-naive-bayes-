@@ -161,7 +161,40 @@ class Bayes{
         $p5     = $pP / $sT;
 
         $hsl    = $paTrue * $p1 * $p2 * $p3 * $p4 * $p5;
+        return $hsl; 
+    }
+
+    function hasilFalse($sF = 0, $sD = 0, $pU = 0, $pT = 0, $pBB = 0, $pK = 0, $pP = 0){
+
+        $paFalse = $sF / $sD;
+        $p1      = $pU / $sT;
+        $p2      = $pT / $sT;
+        $p3      = $pBB / $sT;
+        $p4      = $pK / $sT;
+        $p5      = $pP / $sT;
+
+        $hsl = $paFalse * $p1 * $p2 * $p3 * $p4 * $p5;
+
         return $hsl;
     }
+
+    function perbandingan($pATrue, $pAFalse){
+        if($pATrue > $pAFalse):
+            $stt    = "DITERIMA";
+            $hitung = ($pATrue / ($pATrue + $pAFalse)) * 100;
+            $diterima = 100 - $hitung;
+
+        elseif($pAFalse > $pATrue):
+            $stt = "DITOLAK";
+            $hitung = ($pAFalse / ($pAFalse + $pATrue)) * 100;
+            $diterima = 100 - $hitung;
+        endif;
+
+       $hsl = array($stt, $hitung, $diterima);
+       
+       return $hsl; 
+    }
+
+    // ============================================================================= // 
 }
 ?>
