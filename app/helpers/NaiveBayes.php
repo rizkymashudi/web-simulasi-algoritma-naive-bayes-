@@ -44,6 +44,9 @@ class Bayes{
         return count($hasil);
     }
     
+    // ===================== END SUM TRUE FALSE ==================== //
+
+
 
     /* ==================================================
                     FUNCTION PROBABILITAS
@@ -81,6 +84,84 @@ class Bayes{
         return $t;
     }
 
-    
+    function probBeratB($bb, $status){
+        $data = $file_get_contents($this->DataTraining);
+        $hasil= json_decode($data, true);
+
+        $t = 0;
+        foreach($hasil as $hs):
+            if($hs['berat_badan'] == $bb && $hasil['status'] == $status):
+                $t += 1;
+            elseif($hs['berat_badan'] == $bb && $hasil['status'] == $status):
+                $t += 1;
+            endif;
+        endforeach;
+
+        return $t;
+    }
+
+    function probPendidikan($pendidikan, $status)
+    {
+        $data = file_get_contents($this->DataTraining);
+        $hasil= json_decode($data, true);
+
+        $t = 0;
+        foreach($hasil as $hs):
+            if($hs['pendidikan'] == $pendidikan && $hasil['status'] == $status):
+                $t += 1;
+            elseif($hasil['pendidikan'] == $pendidikan && $hasil['status'] == $status):
+                $t += 1;
+            endif;
+        endforeach;
+        
+        return $t;
+    }
+
+
+    function probKesehatan($kesehatan,$status)
+    {
+        $data = file_get_contents($this->DataTraining);
+        $hasil = json_decode($data,true);
+
+        $t = 0;
+        foreach ($hasil as $hs) {
+        if($hs['kesehatan'] == $kesehatan && $hs['status'] == $status){
+            $t += 1;
+        }else if($hs['kesehatan'] == $kesehatan && $hs['status'] == $status){
+            $t +=1;
+        }
+        }
+        return $t;
+    }
+
+    // ========================= END PROBABILITY ========================= //
+
+
+
+    /* =============================================================
+        LETS COUNTING
+        keterangan parameter :
+        $sT :   jumlah data yang bernilai true  //sumTrue
+        $sF :   jumlah data yang bernilai false //sumFalse 
+        $sD :   jumlah data pada data training  //sumData
+        $pU :   jumlah probability umur         //probUmur
+        $pT :   jumlah probability tinggi       //probTinggi
+        $pBB:   jumlah probability berat badan  //probBB
+        $pK :   jumlah probability kesehatan    //probKesehatan
+        $pP :   jumlah probability pendidikan   //probPendidikan
+    ============================================================== */
+
+    function hasilTrue($sT =0, $sD = 0, $pU = 0, $pT = 0, $pBB = 0, $pK = 0, $pP = 0){
+        
+        $paTrue = $sT / $sD;
+        $p1     = $pU / $sT;
+        $p2     = $pT / $sT;
+        $p3     = $pBB/ $sT;
+        $p4     = $pK / $sT;
+        $p5     = $pP / $sT;
+
+        $hsl    = $paTrue * $p1 * $p2 * $p3 * $p4 * $p5;
+        return $hsl;
+    }
 }
 ?>

@@ -69,12 +69,12 @@
                         </a>
 
                         {{-- twitter --}}
-                        <a class="icn" href="#" target="_blank">
+                        <a class="icn" href="https://twitter.com/slplessjnkie" target="_blank">
                             <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
 
                         {{-- linkedin --}}
-                        <a class="icn" href="#" target="_blank">
+                        <a class="icn" href="https://www.linkedin.com/in/rizky-mashudi-561897162/" target="_blank">
                             <i class="fab fa-linkedin-in fa-lg-white-text mr-md-5 mr-3 fa-2x"></i>
                         </a>
                     </div>
