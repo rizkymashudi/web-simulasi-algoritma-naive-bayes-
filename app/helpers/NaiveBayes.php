@@ -1,4 +1,5 @@
 <?php
+namespace App\Helpers;
 
 class Bayes{
 
@@ -10,7 +11,8 @@ class Bayes{
     ============================================ */
 
     function sumTrue(){
-        $data = file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil= json_decode($data, true);
 
         $t = 0;
@@ -24,7 +26,8 @@ class Bayes{
     }
 
     function sumFalse(){
-        $data = file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil= json_decode($data, true);
 
         $t = 0;
@@ -38,7 +41,8 @@ class Bayes{
     }
 
     function sumData(){
-        $data = file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil= json_decode($data, true);
         
         return count($hasil);
@@ -53,7 +57,8 @@ class Bayes{
     =================================================== */
 
     function probUmur($umur, $status){
-        $data = file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil= json_decode($data, true);
 
         $t = 0;
@@ -69,7 +74,8 @@ class Bayes{
     }
 
     function probTinggi($tinggi, $status){
-        $data = file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil= json_decode($data, true);
 
         $t = 0;
@@ -85,14 +91,15 @@ class Bayes{
     }
 
     function probBeratB($bb, $status){
-        $data = $file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil= json_decode($data, true);
 
         $t = 0;
         foreach($hasil as $hs):
-            if($hs['berat_badan'] == $bb && $hasil['status'] == $status):
+            if($hs['berat_badan'] == $bb && $hs['status'] == $status):
                 $t += 1;
-            elseif($hs['berat_badan'] == $bb && $hasil['status'] == $status):
+            elseif($hs['berat_badan'] == $bb && $hs['status'] == $status):
                 $t += 1;
             endif;
         endforeach;
@@ -102,14 +109,15 @@ class Bayes{
 
     function probPendidikan($pendidikan, $status)
     {
-        $data = file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil= json_decode($data, true);
 
         $t = 0;
         foreach($hasil as $hs):
-            if($hs['pendidikan'] == $pendidikan && $hasil['status'] == $status):
+            if($hs['pendidikan'] == $pendidikan && $hs['status'] == $status):
                 $t += 1;
-            elseif($hasil['pendidikan'] == $pendidikan && $hasil['status'] == $status):
+            elseif($hs['pendidikan'] == $pendidikan && $hs['status'] == $status):
                 $t += 1;
             endif;
         endforeach;
@@ -120,7 +128,8 @@ class Bayes{
 
     function probKesehatan($kesehatan,$status)
     {
-        $data = file_get_contents($this->DataTraining);
+        $DT = \storage_path($this->DataTraining);
+        $data = file_get_contents($DT);
         $hasil = json_decode($data,true);
 
         $t = 0;
@@ -167,11 +176,11 @@ class Bayes{
     function hasilFalse($sF = 0, $sD = 0, $pU = 0, $pT = 0, $pBB = 0, $pK = 0, $pP = 0){
 
         $paFalse = $sF / $sD;
-        $p1      = $pU / $sT;
-        $p2      = $pT / $sT;
-        $p3      = $pBB / $sT;
-        $p4      = $pK / $sT;
-        $p5      = $pP / $sT;
+        $p1      = $pU / $sF;
+        $p2      = $pT / $sF;
+        $p3      = $pBB / $sF;
+        $p4      = $pK / $sF;
+        $p5      = $pP / $sF;
 
         $hsl = $paFalse * $p1 * $p2 * $p3 * $p4 * $p5;
 

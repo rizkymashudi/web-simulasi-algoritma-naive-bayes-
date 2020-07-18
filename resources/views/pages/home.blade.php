@@ -20,6 +20,7 @@
             {{-- form input --}}
             <div class="col-6">
                 <form action="{{ route('simulasi-create') }}" method="POST" class="mt-3">
+                    @csrf
                     <div class="form-group">
                         <label for="umur">Umur :</label>
                         <select name="umur" id="umur" class="form-control selBox" required="required">
@@ -61,7 +62,7 @@
                         <select name="kesehatan" id="kesehatan" class="form-control selBox" required="required">
                         <option value="" disabled selected>-- pilih status kesehatan--</option>
                             <option value="sehat" name="sehat">Sehat</option>
-                            <option value="tidak_sehat" name="tidak_sehat">Tidak Sehat</option>
+                            <option value="tidak_sehat" name="tidak sehat">Tidak Sehat</option>
                         </select>
                         <span id="lblErrorSK" style="color: red"></span>
                     </div>
@@ -88,8 +89,8 @@
     {{-- HASIL --}}
     <div class="row">
         <div class="col-12 mt-5 mb-5">
-            <div id="hasilSIM" style="margin-bottom:30px;">
-  
+            <div id="hasilSIM" class="container">
+              
             </div>
         </div>
     </div>
@@ -102,9 +103,15 @@
             });
         });
 
+
         //validate
         function simulasi()
         {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             var umur = $("#umur").val();
             var tinggi_badan = $("#tinggi").val();
             var berat_badan = $("#beratB").val();
@@ -142,14 +149,36 @@
                 $("#lblErrorPD").html("Pendidikan Tidak Boleh Kosong");
             return false;
             }
+            
+            //send data to controller using ajax
+            $.ajax({
+                url: '{{ route("simulasi-create") }}',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    umur : umur,
+                    tinggi_badan : tinggi_badan,
+                    berat_badan : berat_badan,
+                    status_kesehatan : status_kesehatan,
+                    pendidikan : pendidikan
+                },
+                success: function(data){
+                    var obj = JSON.parse(data);
+                    console.log(obj.resultcontent);
+                    document.getElementById("hasilSIM").innerHTML = data;
+                    $('#hasilSIM').html(obj.resultcontent);
+                },
+            });
+
+            return false;
         }
 
-        $(document).ready(function(){
-        $('#dor').click(function(){
-            $('html, body').animate({
-                scrollTop: $("#hasilSIM").offset().top
-            }, 500);
-        });
-        });
+        // $(document).ready(function(){
+        // $('#dor').click(function(){
+        //     $('html, body').animate({
+        //         scrollTop: $("#hasilSIM").offset().top
+        //     }, 500);
+        // });
+        // });
     </script>
 @endsection

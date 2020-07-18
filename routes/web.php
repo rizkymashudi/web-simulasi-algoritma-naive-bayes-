@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/home', 'simulasiController@index')->name('home');
-Route::post('/home', 'simulasiController@simulate')->name('simulasi-create');
+Route::post('/home/create', 'simulasiController@simulate')->name('simulasi-create');
