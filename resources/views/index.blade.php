@@ -24,7 +24,7 @@
 </head>
 <body>
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light static-top">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top navbar-light bg-light static-top">
         <div class="container">
             <a class="navbar-brand" href="{{ Route('home') }}"></a>
                 <img src="logo-v2.png" alt="" width="50" height="50">
@@ -32,8 +32,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse" id="navbarRespon">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ Route('home') }}">Home<span class="sr-only">(current)</span></a>
                     </li>
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright text-center py-3 abu2">© <?php echo date('Y'); ?> Copyright
+        <div class="footer-copyright text-center py-3 bg-dark">© <?php echo date('Y'); ?> Copyright
             <a href="https://github.com/rizkymashudi">rizkymashudi</a>
         </div>
     </footer>
