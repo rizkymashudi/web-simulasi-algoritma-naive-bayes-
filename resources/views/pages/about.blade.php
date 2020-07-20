@@ -10,10 +10,10 @@
 			<center><h2 class="tebal mb-5">hello i'm rizky!</h2></center>
 			<hr>
 
-			<div class="row mt-5">
-				<div class="col-md-4">
+			
+				<div class="col-md-4 mt-5 ">
 					<div class="card" style="width: 18rem;">
-						<img class="card-img-top" src="" alt="Card image cap">
+						<img class="card-img-top" src="me.jpg" alt="Card image cap">
 						<div class="card-body">
 							<p class="card-text">
 								<b>Rizky mashudi</b><br>
@@ -24,7 +24,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 
 		</div> <!-- end col -->
 	</div> <!-- end row -->

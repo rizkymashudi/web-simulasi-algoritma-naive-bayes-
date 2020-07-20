@@ -41,7 +41,7 @@
                         <a class="nav-link" href="#">Data training</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="{{ Route('About') }}">About</a>
                     </li>
                 </ul>
             </div>
@@ -58,7 +58,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 py-5">
-                    <div class="mb-5 d-flex justify-content-center">
+                    <div class="mb-5 text-center">
 
                         {{-- instagram --}}
                         <a class="icn" href="#" target="_blank">

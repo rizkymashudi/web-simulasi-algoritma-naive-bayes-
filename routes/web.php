@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//SIMULASI CONTROLLER
 Route::get('/home', 'simulasiController@index')->name('home');
 Route::post('/home/create', 'simulasiController@simulate')->name('simulasi-create');
+
+//ABOUT CONTROLLER
+Route::get('/About', 'AboutController@index')->name('About');

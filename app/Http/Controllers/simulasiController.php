@@ -61,7 +61,7 @@ class simulasiController extends Controller
                         </div>";
 
         $response .=    "<div class='card' style='width: 25rem;'>
-                            <div class='card-header' style='background-color:#17a2b8;color:#fff'>
+                            <div class='card-header' style='background-color:#343a40;color:#fff'>
                             <b>Informasi Calon Pegawai</b>
                             </div>
                             <ul class='list-group list-group-flush'>
@@ -75,7 +75,7 @@ class simulasiController extends Controller
                         <hr>";
         
         $response .=    "<table class='table table-bordered' style='font-size:18px;text-align:center'>
-                            <tr style='background-color:#17a2b8;color:#fff'>
+                            <tr style='background-color:##343a40;color:#fff'>
                                 <th>Jumlah True</th>
                                 <th>Jumlah False</th>
                                 <th>Jumlah Total Data</th>
@@ -89,7 +89,7 @@ class simulasiController extends Controller
 
         $response .=    "<br>
                         <table class='table table-bordered' style='font-size:18px;text-align:center'>
-                            <tr style='background-color:#17a2b8;color:#fff'>
+                            <tr style='background-color:#343a40;color:#fff'>
                                 <th></th>
                                 <th>True</th>
                                 <th>False</th>
@@ -128,7 +128,7 @@ class simulasiController extends Controller
 
         $response .=    "<br>
                         <table class='table table-bordered' style='font-size:18px;text-align:center;'>
-                            <tr style='background-color:#17a2b8;color:#fff'>
+                            <tr style='background-color:#343a40;color:#fff'>
                                 <th>Presentasi Diterima</th>
                                 <th>Presentasi Ditolak</th>
                             </tr>
